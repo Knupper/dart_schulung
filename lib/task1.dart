@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 void main(List<String> arguments) {
@@ -13,8 +14,8 @@ void main(List<String> arguments) {
   print('Enter second number:');
   final secondNumber = stdin.readLineSync() ?? '';
 
-  final firstParsedNumber = int.tryParse(firstNumber);
-  final secondParsedNumber = int.tryParse(secondNumber);
+  final firstParsedNumber = firstNumber.parsed;
+  final secondParsedNumber = secondNumber.parsed;
 
   if (firstParsedNumber == null || secondParsedNumber == null) {
     print('Invalid input');
@@ -31,4 +32,18 @@ void main(List<String> arguments) {
 
 int calculate({required int leftHand, required int rightHand}) {
   return leftHand + rightHand;
+}
+
+class RandomNumberGenerator {
+  RandomNumberGenerator();
+
+  final int _randomNumber = 0;
+  final StreamController<int> _controller = StreamController<int>();
+  Stream<int> get stream => _controller.stream;
+}
+
+extension StringExtension on String {
+  String get reversed => split('').reversed.join();
+
+  int get parsed => int.tryParse(this) ?? 0;
 }

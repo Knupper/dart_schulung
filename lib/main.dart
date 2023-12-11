@@ -1,5 +1,5 @@
 void main(List<String> arguments) {
-  const _tmp = 42;
+  const tmp0 = 42;
   final tmp = '42';
 
   // type is defined at allocation
@@ -14,7 +14,7 @@ void main(List<String> arguments) {
 }
 
 int calculate({bool? shouldAdd, required int leftHand, required int rightHand}) {
-  if(shouldAdd == null) {
+  if (shouldAdd == null) {
     throw ArgumentError('shouldAdd must not be null');
   }
 
